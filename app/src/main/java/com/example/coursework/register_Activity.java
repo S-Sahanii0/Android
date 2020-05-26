@@ -100,6 +100,7 @@ public class register_Activity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, execute if condition
+                            startActivity(new Intent(register_Activity.this, LoginActivity.class));
                             Toast.makeText(register_Activity.this, "Signup Successful!", Toast.LENGTH_SHORT).show();
                         } else {
                             // If sign in fails, display a message to the user.
