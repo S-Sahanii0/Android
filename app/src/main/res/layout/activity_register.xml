@@ -77,11 +77,26 @@
                 android:background="@drawable/backgroundeditview"
                 android:ems="10"
                 android:gravity="center"
-                android:hint=".........."
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textColor="#FFFDFD"
                 android:textColorHint="#F8F4F4" />
+
+            <EditText
+                android:id="@+id/confirm_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/backgroundeditview"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#FFFDFD"
+                android:textColorHint="#F8F4F4" />
+
 
             <EditText
                 android:id="@+id/editText4"
@@ -99,6 +114,7 @@
 
             <Button
                 android:id="@+id/button3"
+                android:onClick="signUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn"
