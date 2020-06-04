@@ -44,7 +44,7 @@ public class NavBar_Food extends AppCompatActivity {
                             break;
 
                         case R.id.profile_id:
-                            sendtoUserProfile();
+                            displayedFrag=new ProfileNav();
                             break;
                     }
 
@@ -54,7 +54,5 @@ public class NavBar_Food extends AppCompatActivity {
                 }
             };
 
-    private void sendtoUserProfile() {
-        startActivity(new Intent(NavBar_Food.this, ProfileNav.class));
-    }
+   
 }
