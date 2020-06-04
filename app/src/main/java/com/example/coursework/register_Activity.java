@@ -87,6 +87,9 @@ public class register_Activity extends AppCompatActivity {
             return;
         } else if (password.length() < 6) {
             Toast.makeText(this, "Password too short", Toast.LENGTH_SHORT).show();
+
+        }else if (password != confirm_pass){
+            Toast.makeText(register_Activity.this, "Password do not match", Toast.LENGTH_SHORT).show();
         } else {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -112,14 +115,13 @@ public class register_Activity extends AppCompatActivity {
                                     }
                                 });
 
-                            } else {
-                                Toast.makeText(register_Activity.this, "Password do not match", Toast.LENGTH_SHORT).show();
                             }
-
                         }
                     });
         }
     }
+
+
 }
 
 

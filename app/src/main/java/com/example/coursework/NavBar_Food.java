@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -41,6 +42,10 @@ public class NavBar_Food extends AppCompatActivity {
                         case R.id.cart_id:
                             displayedFrag= new CartNav();
                             break;
+
+                        case R.id.profile_id:
+                            sendtoUserProfile();
+                            break;
                     }
 
                     //for displaying frag
@@ -48,4 +53,8 @@ public class NavBar_Food extends AppCompatActivity {
                     return true;
                 }
             };
+
+    private void sendtoUserProfile() {
+        startActivity(new Intent(NavBar_Food.this, ProfileNav.class));
+    }
 }
