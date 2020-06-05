@@ -54,6 +54,20 @@
                 android:padding="10dp"
                 android:textColor="#F8F4F4"
                 android:textColorHint="#FFFFFF" />
+            <EditText
+                android:id="@+id/sign_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/backgroundeditview"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="FullName"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColor="#F8F4F4"
+                android:textColorHint="#FFFFFF" />
 
             <EditText
                 android:id="@+id/editText3"

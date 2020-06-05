@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ProfileNav">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AB363535"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="match_parent"
+                android:layout_marginTop="40dp"
+                android:layout_height="150dp"
+                android:src="@drawable/profile"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/prof_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Username"
+                android:textSize="20sp"
+                android:textColor="#FDF8F8"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/prof_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Full Name"
+                android:textSize="20sp"
+                android:textColor="#FDF8F8"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/prof_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Email"
+                android:textSize="20sp"
+                android:textColor="#FDF8F8"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/prof_numb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Number"
+                android:textSize="20sp"
+                android:textColor="#FDF8F8"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/prof_logout"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn"
+                android:text="Logout"
+                android:textColor="#F3EFEF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class register_Activity extends AppCompatActivity {
 
 
-    EditText Username, Email, Password, Number, Confirm_pass;
+    EditText Username, Fname,Email, Password, Number, Confirm_pass;
     TextView Log;
     Button Register;
     ImageView Image;
@@ -36,6 +36,7 @@ public class register_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         Username = findViewById(R.id.editText);
+        Fname=findViewById(R.id.sign_name);
         Email = findViewById(R.id.editText3);
         Password = findViewById(R.id.editText2);
         Number = findViewById(R.id.editText4);
@@ -68,6 +69,8 @@ public class register_Activity extends AppCompatActivity {
         String confirm_pass = Confirm_pass.getText().toString().trim();
         final String username = Username.getText().toString().trim();
         final String number = Number.getText().toString().trim();
+        final String name = Fname.getText().toString().trim();
+
 
 
         if (TextUtils.isEmpty(email)) {
@@ -75,6 +78,9 @@ public class register_Activity extends AppCompatActivity {
             return;
         } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Password field is empty", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (TextUtils.isEmpty(name)) {
+            Toast.makeText(this, "Name field is empty", Toast.LENGTH_SHORT).show();
             return;
         } else if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Username field is empty", Toast.LENGTH_SHORT).show();
@@ -87,6 +93,8 @@ public class register_Activity extends AppCompatActivity {
             return;
         } else if (password.length() < 6) {
             Toast.makeText(this, "Password too short", Toast.LENGTH_SHORT).show();
+        //}else if (password != confirm_pass){
+            //Toast.makeText(register_Activity.this, "Password do not match", Toast.LENGTH_SHORT).show();
         } else {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -96,7 +104,7 @@ public class register_Activity extends AppCompatActivity {
                                 // Sign in success, execute if condition
                                 Toast.makeText(register_Activity.this, "Signup Successful!", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(register_Activity.this, NavBar_Food.class));
-                                User user = new User(username, email, number);
+                                User user = new User(username, email, number, name);
                                 FirebaseDatabase.getInstance().getReference("users")
                                         .child(FirebaseAuth.getInstance().getUid())
                                         .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -112,14 +120,13 @@ public class register_Activity extends AppCompatActivity {
                                     }
                                 });
 
-                            } else {
-                                Toast.makeText(register_Activity.this, "Password do not match", Toast.LENGTH_SHORT).show();
                             }
-
                         }
                     });
         }
     }
+
+
 }
 
 
