@@ -18,7 +18,9 @@ public class OrderNav extends Fragment {
     RecyclerView recyclerView;
     FoodAdapter adapter;
 
+
     List<FoodList> foodlist;
+    ;
 
     @Nullable
     @Override
@@ -29,7 +31,7 @@ public class OrderNav extends Fragment {
         foodlist = new ArrayList<>();
 
         recyclerView = view.findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -56,6 +58,15 @@ public class OrderNav extends Fragment {
                         "Burger"
 
                 ));
+        foodlist.add(
+                new FoodList(
+                        "2330",
+                        R.drawable.pizza,
+                        "Sausage"
+
+                ));
+
+
 
         FoodAdapter adapter = new FoodAdapter(getContext(), foodlist);
 
