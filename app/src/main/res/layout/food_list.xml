@@ -1,61 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp">
 
-        <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        app:cardElevation="3dp"
+        android:layout_margin="4dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:weightSum="5.5"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:padding="4dp" />
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:scaleType="centerCrop"
+                android:src="@drawable/burger"
 
-            <TextView
-                android:id="@+id/textViewTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toEndOf="@id/imageView"
-                android:text=" Chicken Burger"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000" />
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:weightSum="2"
+                android:layout_weight="1.5">
 
-            <TextView
-                android:id="@+id/textViewPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewTitle"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:text="Rs 180"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.3"
+                    android:padding="10dp"
+                    android:orientation="vertical">
 
-            <Button
-                android:id="@+id/orderButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewPrice"
-                android:layout_marginLeft="75dp"
-                android:layout_marginTop="-6dp"
-                android:layout_toRightOf="@id/textViewTitle"
-                android:text="Order" />
+                    <TextView
+                        android:id="@+id/textViewTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Title"
+                        android:textSize="18sp"
+                        android:maxLines="1"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="180"
+                        android:textSize="18sp"
+                        android:maxLines="1"
+                        />
 
 
-        </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/orderButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Order"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"/>
+
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
     </androidx.cardview.widget.CardView>
 
-
-</LinearLayout>
+ </LinearLayout>
