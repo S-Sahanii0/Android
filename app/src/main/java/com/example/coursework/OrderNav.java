@@ -56,6 +56,48 @@ public class OrderNav extends Fragment {
                         "Burger"
 
                 ));
+        foodlist.add(
+                new FoodList(
+                        "300",
+                        R.drawable.pizza,
+                        "Burger"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "300",
+                        R.drawable.pizza,
+                        "Burger"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "300",
+                        R.drawable.pizza,
+                        "Burger"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "300",
+                        R.drawable.pizza,
+                        "Burger"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "300",
+                        R.drawable.pizza,
+                        "Burger"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "300",
+                        R.drawable.pizza,
+                        "Burger"
+
+                ));
 
         FoodAdapter adapter = new FoodAdapter(getContext(), foodlist);
 
