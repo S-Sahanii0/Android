@@ -1,39 +1,35 @@
 package com.example.coursework;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderNav extends Fragment {
+public class Combo extends AppCompatActivity {
+
     RecyclerView recyclerView;
-    FoodAdapter adapter;
+    ComboAdapter adapter;
 
 
     List<FoodList> foodlist;
 
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_combo);
 
-        View view = inflater.inflate(R.layout.order_frag, container, false);
 
         foodlist = new ArrayList<>();
 
-        recyclerView = view.findViewById(R.id.recyclerview);
+        recyclerView =findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         foodlist.add(
                 new FoodList(
@@ -68,11 +64,12 @@ public class OrderNav extends Fragment {
 
 
 
-        FoodAdapter adapter = new FoodAdapter(getContext(), foodlist);
+        ComboAdapter adapter = new ComboAdapter(this, foodlist);
 
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
 
-        return view;
+
     }
-}
+    }
+
