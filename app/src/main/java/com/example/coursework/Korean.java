@@ -30,35 +30,48 @@ public class Korean extends AppCompatActivity {
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.burger,
-                        "Burger"
+                        "Rs.380",
+                        R.drawable.jajang,
+                        "Jajangmyeon"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.momo,
-                        "Burger"
+                        "Rs.350",
+                        R.drawable.kimbap,
+                        "Chicken Kimbap"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.pizza,
-                        "Burger"
+                        "Rs.150",
+                        R.drawable.kimchi,
+                        "Samgyeopsal"
 
                 ));
         foodlist.add(
                 new FoodList(
-                        "2330",
-                        R.drawable.pizza,
-                        "Sushi"
+                        "Rs.450",
+                        R.drawable.bibimbap,
+                        "Bibimbap"
 
                 ));
+        foodlist.add(
+                new FoodList(
+                        "Rs.450",
+                        R.drawable.ricecake,
+                        "Spicy ricecake"
 
+                ));
+        foodlist.add(
+                new FoodList(
+                        "Rs.250",
+                        R.drawable.pat,
+                        "Patbingsu"
+
+                ));
 
 
         KoreanAdapter adapter = new KoreanAdapter(this, foodlist);

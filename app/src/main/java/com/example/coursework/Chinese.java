@@ -30,32 +30,46 @@ public class Chinese extends AppCompatActivity {
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.burger,
-                        "Burger"
+                        "Rs.350",
+                        R.drawable.dimsums,
+                        "Dim Sums"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.momo,
-                        "Burger"
+                        "Rs.500",
+                        R.drawable.chillichicken,
+                        "Szechwan Chilli Chicken"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.pizza,
-                        "Burger"
+                        "Rs.300",
+                        R.drawable.soup,
+                        "Hot and Sour Soup"
 
                 ));
         foodlist.add(
                 new FoodList(
-                        "2330",
-                        R.drawable.pizza,
-                        "Sausage"
+                        "Rs.250",
+                        R.drawable.springrolls,
+                        "Spring Rolls"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "Rs.350",
+                        R.drawable.noodle,
+                        "Chicken Noodle"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "Rs.450",
+                        R.drawable.glassnoodle,
+                        "Shrimp glass noodle"
 
                 ));
 

@@ -30,35 +30,48 @@ public class Break extends AppCompatActivity {
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.burger,
-                        "Burger"
+                        "Rs.450",
+                        R.drawable.waffle,
+                        "Fruit Waffle"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.momo,
-                        "Burger"
+                        "Rs.300",
+                        R.drawable.sandwitch,
+                        "Sandwitch"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.pizza,
-                        "Burger"
+                        "Rs.350",
+                        R.drawable.eggs,
+                        "Eggs Benedict"
 
                 ));
         foodlist.add(
                 new FoodList(
-                        "2330",
-                        R.drawable.pizza,
-                        "Bread"
+                        "Rs.250",
+                        R.drawable.pancake,
+                        "Pancake"
 
                 ));
+        foodlist.add(
+                new FoodList(
+                        "Rs.350",
+                        R.drawable.smoothie,
+                        "Mix fruit smoothie"
 
+                ));
+        foodlist.add(
+                new FoodList(
+                        "Rs.150",
+                        R.drawable.donuts,
+                        "Honey glazed donuts"
+
+                ));
 
 
         BreakfastAdapter adapter = new BreakfastAdapter(this, foodlist);

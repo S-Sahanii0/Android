@@ -33,32 +33,46 @@ public class Combo extends AppCompatActivity {
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.burger,
-                        "Burger"
+                        "Rs.450",
+                        R.drawable.friecoke,
+                        "Fries,Burger,Coke"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.momo,
-                        "Burger"
+                        "Rs.500",
+                        R.drawable.naan,
+                        "Naan,Butter Chicken, Butter paneer"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.pizza,
-                        "Burger"
+                        "Rs.400",
+                        R.drawable.comm,
+                        "Chicken,Pork,Buff"
 
                 ));
         foodlist.add(
                 new FoodList(
-                        "2330",
-                        R.drawable.pizza,
-                        "Sausage"
+                        "Rs.350",
+                        R.drawable.fish,
+                        "Fish and chips"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "Rs.350",
+                        R.drawable.biscuit,
+                        "Chicken and Biscuit"
+
+                ));
+        foodlist.add(
+                new FoodList(
+                        "Rs.450",
+                        R.drawable.dessert,
+                        "Special Dessert"
 
                 ));
 

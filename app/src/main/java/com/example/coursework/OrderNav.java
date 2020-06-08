@@ -46,23 +46,23 @@ public class OrderNav extends Fragment {
         foodlist.add(
                 new FoodList(
                         "300",
-                        R.drawable.momo,
-                        "Burger"
+                        R.drawable.moomoo,
+                        "Chicken momo"
 
                 ));
 
         foodlist.add(
                 new FoodList(
-                        "300",
-                        R.drawable.pizza,
-                        "Burger"
+                        "600",
+                        R.drawable.pizzu,
+                        "Salami Pizza"
 
                 ));
         foodlist.add(
                 new FoodList(
-                        "2330",
-                        R.drawable.pizza,
-                        "Sausage"
+                        "250",
+                        R.drawable.hotdog,
+                        "Hotdog"
 
                 ));
 
