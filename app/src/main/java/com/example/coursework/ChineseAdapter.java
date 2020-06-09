@@ -15,9 +15,9 @@ import java.util.List;
 public class ChineseAdapter extends RecyclerView.Adapter<ChineseAdapter.ProductViewHolder> {
 
     private Context mCtx;
-    private List<FoodList> foodList;
+    private List<Menu> foodList;
 
-    public ChineseAdapter(Context mCtx, List<FoodList> foodList) {
+    public ChineseAdapter(Context mCtx, List<Menu> foodList) {
         this.mCtx = mCtx;
         this.foodList = foodList;
     }
@@ -34,11 +34,11 @@ public class ChineseAdapter extends RecyclerView.Adapter<ChineseAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
     //Bind data
-        FoodList foodlist = foodList.get(position);
+        Menu foodlist = foodList.get(position);
 
         holder.textViewTitle.setText(foodlist.getTitle());
         holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(Menu.getImage()));
     }
 
     @Override

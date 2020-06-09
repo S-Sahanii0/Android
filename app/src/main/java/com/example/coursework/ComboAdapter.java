@@ -15,9 +15,9 @@ import java.util.List;
 public class ComboAdapter extends RecyclerView.Adapter<ComboAdapter.ProductViewHolder> {
 
     private Context mCtx;
-    private List<FoodList> foodList;
+    private List<Menu> foodList;
 
-    public ComboAdapter(Context mCtx, List<FoodList> foodList) {
+    public ComboAdapter(Context mCtx, List<Menu> foodList) {
         this.mCtx = mCtx;
         this.foodList = foodList;
     }
@@ -34,11 +34,11 @@ public class ComboAdapter extends RecyclerView.Adapter<ComboAdapter.ProductViewH
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
     //Bind data
-        FoodList foodlist = foodList.get(position);
+        Menu foodlist = foodList.get(position);
 
         holder.textViewTitle.setText(foodlist.getTitle());
         holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+        // holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
     }
 
     @Override

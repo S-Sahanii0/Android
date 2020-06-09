@@ -14,7 +14,7 @@ public class Break extends AppCompatActivity {
     BreakfastAdapter adapter;
 
 
-    List<FoodList> foodlist;
+    List<Menu> foodlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,51 +27,6 @@ public class Break extends AppCompatActivity {
         recyclerView.setHasFixedSize(false);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        foodlist.add(
-                new FoodList(
-                        "Rs.450",
-                        R.drawable.waffle,
-                        "Fruit Waffle"
-
-                ));
-
-        foodlist.add(
-                new FoodList(
-                        "Rs.300",
-                        R.drawable.sandwitch,
-                        "Sandwitch"
-
-                ));
-
-        foodlist.add(
-                new FoodList(
-                        "Rs.350",
-                        R.drawable.eggs,
-                        "Eggs Benedict"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.250",
-                        R.drawable.pancake,
-                        "Pancake"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.350",
-                        R.drawable.smoothie,
-                        "Mix fruit smoothie"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.150",
-                        R.drawable.donuts,
-                        "Honey glazed donuts"
-
-                ));
 
 
         BreakfastAdapter adapter = new BreakfastAdapter(this, foodlist);

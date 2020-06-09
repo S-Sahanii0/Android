@@ -16,7 +16,7 @@ public class Combo extends AppCompatActivity {
     ComboAdapter adapter;
 
 
-    List<FoodList> foodlist;
+    List<Menu> foodlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,51 +30,6 @@ public class Combo extends AppCompatActivity {
         recyclerView.setHasFixedSize(false);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        foodlist.add(
-                new FoodList(
-                        "Rs.450",
-                        R.drawable.friecoke,
-                        "Fries,Burger,Coke"
-
-                ));
-
-        foodlist.add(
-                new FoodList(
-                        "Rs.500",
-                        R.drawable.naan,
-                        "Naan,Butter Chicken, Butter paneer"
-
-                ));
-
-        foodlist.add(
-                new FoodList(
-                        "Rs.400",
-                        R.drawable.comm,
-                        "Chicken,Pork,Buff"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.350",
-                        R.drawable.fish,
-                        "Fish and chips"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.350",
-                        R.drawable.biscuit,
-                        "Chicken and Biscuit"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.450",
-                        R.drawable.dessert,
-                        "Special Dessert"
-
-                ));
 
 
 

@@ -10,14 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHolder> {
 
     private Context mCtx;
-    private List<FoodList> foodList;
+    private List<Menu> foodList;
 
-    public FoodAdapter(Context mCtx, List<FoodList> foodList) {
+    public FoodAdapter(Context mCtx, List<Menu> foodList) {
         this.mCtx = mCtx;
         this.foodList = foodList;
     }
@@ -34,11 +36,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHol
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
     //Bind data
-        FoodList foodlist = foodList.get(position);
+        Menu foodlist = foodList.get(position);
 
         holder.textViewTitle.setText(foodlist.getTitle());
         holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+        Picasso.with(mCtx).load(foodlist.getImage()).placeholder(R.drawable.burger).fit().centerCrop().into(holder.imageView);
     }
 
     @Override

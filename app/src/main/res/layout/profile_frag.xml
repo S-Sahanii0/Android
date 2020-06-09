@@ -31,7 +31,7 @@
                 app:civ_border_color="#FF000000"
                 app:civ_border_width="2dp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/prof_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                 android:textColor="#FDF8F8"
                 android:textStyle="bold" />
 
-            <TextView
+            <EditText
                 android:id="@+id/prof_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 android:textColor="#FDF8F8"
                 android:textStyle="bold" />
 
-            <TextView
+            <EditText
                 android:id="@+id/prof_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                 android:textColor="#FDF8F8"
                 android:textStyle="bold" />
 
-            <TextView
+            <EditText
                 android:id="@+id/prof_numb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,6 +73,17 @@
                 android:text="Number"
                 android:textSize="20sp"
                 android:textColor="#FDF8F8"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/prof_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn"
+                android:text="Update"
+                android:textColor="#F3EFEF"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Button

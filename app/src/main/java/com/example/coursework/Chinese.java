@@ -15,7 +15,7 @@ public class Chinese extends AppCompatActivity {
     ChineseAdapter adapter;
 
 
-    List<FoodList> foodlist;
+    List<Menu> foodlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,50 +28,6 @@ public class Chinese extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        foodlist.add(
-                new FoodList(
-                        "Rs.350",
-                        R.drawable.dimsums,
-                        "Dim Sums"
-
-                ));
-
-        foodlist.add(
-                new FoodList(
-                        "Rs.500",
-                        R.drawable.chillichicken,
-                        "Szechwan Chilli Chicken"
-
-                ));
-
-        foodlist.add(
-                new FoodList(
-                        "Rs.300",
-                        R.drawable.soup,
-                        "Hot and Sour Soup"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.250",
-                        R.drawable.springrolls,
-                        "Spring Rolls"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.350",
-                        R.drawable.noodle,
-                        "Chicken Noodle"
-
-                ));
-        foodlist.add(
-                new FoodList(
-                        "Rs.450",
-                        R.drawable.glassnoodle,
-                        "Shrimp glass noodle"
-
-                ));
 
 
 
