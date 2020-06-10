@@ -65,7 +65,7 @@ public class CartNav extends Fragment {
 
         contextOfApplication = getApplicationContext();
         mProgressBar = view.findViewById(R.id.progress_bar);
-        showGallery();
+
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,12 +105,12 @@ public class CartNav extends Fragment {
             Picasso.with(getActivity()).load(filePath).into(food);
         }
     }
-    private String getFileExtension(Uri uri) {
+    /*private String getFileExtension(Uri uri) {
         android.content.Context applicationContext = getActivity().getApplicationContext();
         ContentResolver cr = applicationContext.getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
-    }
+    }*/
 
     private void uploadData() {
         final String name = title.getText().toString();
@@ -118,7 +118,7 @@ public class CartNav extends Fragment {
         String imagekey=databaseReference.push().getKey();
 
         if (filePath != null) {
-            storeRef.child("Food").child(imagekey).putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            storeRef.child("Food").putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
@@ -129,7 +129,7 @@ public class CartNav extends Fragment {
                             Menu menu = new Menu(pricee,uriimage, name);
                             databaseReference.child("Food").push().setValue(menu);
                             Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getActivity(), OrderNav.class));
+                            //startActivity(new Intent(getActivity(), OrderNav.class));
 
                         }
                     });

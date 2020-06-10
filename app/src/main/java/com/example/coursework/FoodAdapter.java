@@ -4,14 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHolder> {
@@ -37,10 +36,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHol
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
     //Bind data
         Menu foodlist = foodList.get(position);
-
-        holder.textViewTitle.setText(foodlist.getTitle());
-        holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
-        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+        holder.title.setText(foodlist.getTitle());
+        holder.price.setText(foodlist.getPrice());
         Picasso.with(mCtx).load(foodlist.getImage()).placeholder(R.drawable.burger).fit().centerCrop().into(holder.imageView);
     }
 
@@ -52,13 +49,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHol
     class ProductViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageView;
-        TextView textViewTitle, textViewPrice;
+        TextView title, price;
+
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView=itemView.findViewById(R.id.imageView);
-            textViewTitle=itemView.findViewById(R.id.textViewTitle);
-            textViewPrice = itemView.findViewById(R.id.textViewPrice);
+            title=itemView.findViewById(R.id.textViewTitle);
+            price = itemView.findViewById(R.id.textViewPrice);
         }
     }
 }
