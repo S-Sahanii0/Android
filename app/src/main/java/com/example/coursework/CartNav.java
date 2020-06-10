@@ -65,7 +65,7 @@ public class CartNav extends Fragment {
 
         contextOfApplication = getApplicationContext();
         mProgressBar = view.findViewById(R.id.progress_bar);
-
+        showGallery();
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,17 +105,17 @@ public class CartNav extends Fragment {
             Picasso.with(getActivity()).load(filePath).into(food);
         }
     }
-    /*private String getFileExtension(Uri uri) {
+    private String getFileExtension(Uri uri) {
         android.content.Context applicationContext = getActivity().getApplicationContext();
         ContentResolver cr = applicationContext.getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
-    }*/
+    }
 
     private void uploadData() {
         final String name = title.getText().toString();
         final String pricee = price.getText().toString();
-        String imagekey=databaseReference.push().getKey();
+        //String imagekey=databaseReference.push().getKey();
 
         if (filePath != null) {
             storeRef.child("Food").putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -126,6 +126,7 @@ public class CartNav extends Fragment {
                         @Override
                         public void onSuccess(Uri uri) {
                             String uriimage=String.valueOf(uri);
+                            databaseReference.push().getKey();
                             Menu menu = new Menu(pricee,uriimage, name);
                             databaseReference.child("Food").push().setValue(menu);
                             Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
