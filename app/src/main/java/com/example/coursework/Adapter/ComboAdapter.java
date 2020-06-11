@@ -1,4 +1,4 @@
-package com.example.coursework;
+package com.example.coursework.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,14 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coursework.R;
+import com.example.coursework.model.Combo_model;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
-public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.ProductViewHolder> {
+public class ComboAdapter extends RecyclerView.Adapter<ComboAdapter.ProductViewHolder> {
 
     private Context mCtx;
-    private List<Menu> foodList;
+    private List<Combo_model> foodList;
 
-    public BreakfastAdapter(Context mCtx, List<Menu> foodList) {
+    public ComboAdapter(Context mCtx, List<Combo_model> foodList) {
         this.mCtx = mCtx;
         this.foodList = foodList;
     }
@@ -26,7 +30,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Prod
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view= inflater.inflate(R.layout.breakfast, null);
+        View view= inflater.inflate(R.layout.food_list, null);
         ProductViewHolder holder = new ProductViewHolder(view);
         return new ProductViewHolder(view);
     }
@@ -34,11 +38,12 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Prod
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
     //Bind data
-        Menu foodlist = foodList.get(position);
+        Combo_model foodlist = foodList.get(position);
 
         holder.textViewTitle.setText(foodlist.getTitle());
         holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
-        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+        // holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+        Picasso.with(mCtx).load(foodlist.getImage()).placeholder(R.drawable.burger).fit().centerCrop().into(holder.imageView);
     }
 
     @Override

@@ -18,16 +18,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.tasks.OnFailureListener;
+import com.example.coursework.model.Combo_model;
+import com.example.coursework.model.Menu;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.core.Context;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
@@ -38,7 +36,7 @@ public class CartNav extends Fragment {
     private static final int PICK_GALLERY_IMAGE = 234;
     public static Context contextOfApplication;
     private Uri filePath;
-    Button add;
+    Button add, combo, korean, breakfast, chinese;
     ImageView food;
     EditText title, price;
     ProgressBar mProgressBar;
@@ -55,6 +53,10 @@ public class CartNav extends Fragment {
         food=view.findViewById(R.id.uploadImage);
         price=view.findViewById(R.id.price_id);
         add=view.findViewById(R.id.add_id);
+        combo=view.findViewById(R.id.combo_btn);
+        chinese=view.findViewById(R.id.chinese_btn);
+        korean=view.findViewById(R.id.korean_btn);
+        breakfast=view.findViewById(R.id.breakfast_btn);
 
 
         fire=FirebaseStorage.getInstance();
@@ -65,7 +67,7 @@ public class CartNav extends Fragment {
 
         contextOfApplication = getApplicationContext();
         mProgressBar = view.findViewById(R.id.progress_bar);
-        showGallery();
+
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,8 +83,37 @@ public class CartNav extends Fragment {
             }
         });
 
+        combo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadCombo();
+            }
+        });
+
+        /*korean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadKorean();
+            }
+        });
+
+        breakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadBreakfast();
+            }
+        });
+
+        chinese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadChinese();
+            }
+        });*/
+
         return view;
     }
+
 
     private Context getApplicationContext() {
         return contextOfApplication;
@@ -118,11 +149,12 @@ public class CartNav extends Fragment {
         //String imagekey=databaseReference.push().getKey();
 
         if (filePath != null) {
-            storeRef.child("Food").putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            final String keys=databaseReference.push().getKey();
+            storeRef.child("Food").child(keys).putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    storeRef.child("Food").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    storeRef.child("Food").child(keys).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
                             String uriimage=String.valueOf(uri);
@@ -139,6 +171,35 @@ public class CartNav extends Fragment {
         } else {
             Toast.makeText(getActivity(), "Please select the product image", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void uploadCombo(){
+        final String name = title.getText().toString();
+        final String pricee = price.getText().toString();
+        if (filePath != null) {
+            final String key=databaseReference.push().getKey();
+            storeRef.child("Combo").child(key).putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    storeRef.child("Combo").child(key).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String uriimage=String.valueOf(uri);
+                            databaseReference.push().getKey();
+                            Combo_model comboModel = new Combo_model(pricee,uriimage, name);
+                            databaseReference.child("Combo").push().setValue(comboModel);
+                            Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
+                            //startActivity(new Intent(getActivity(), OrderNav.class));
+
+                        }
+                    });
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(), "Please select the product image", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 }

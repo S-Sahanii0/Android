@@ -1,14 +1,15 @@
 package com.example.coursework;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.coursework.Adapter.KoreanAdapter;
+import com.example.coursework.model.Menu;
 
 import java.util.ArrayList;
 import java.util.List;

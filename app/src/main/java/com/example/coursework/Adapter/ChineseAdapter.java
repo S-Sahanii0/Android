@@ -1,4 +1,4 @@
-package com.example.coursework;
+package com.example.coursework.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,14 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coursework.R;
+import com.example.coursework.model.Menu;
+
 import java.util.List;
 
-public class KoreanAdapter extends RecyclerView.Adapter<KoreanAdapter.ProductViewHolder> {
+public class ChineseAdapter extends RecyclerView.Adapter<ChineseAdapter.ProductViewHolder> {
 
     private Context mCtx;
     private List<Menu> foodList;
 
-    public KoreanAdapter(Context mCtx, List<Menu> foodList) {
+    public ChineseAdapter(Context mCtx, List<Menu> foodList) {
         this.mCtx = mCtx;
         this.foodList = foodList;
     }
@@ -26,7 +29,7 @@ public class KoreanAdapter extends RecyclerView.Adapter<KoreanAdapter.ProductVie
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view= inflater.inflate(R.layout.korean_list, null);
+        View view= inflater.inflate(R.layout.chinese_list, null);
         ProductViewHolder holder = new ProductViewHolder(view);
         return new ProductViewHolder(view);
     }
@@ -38,7 +41,7 @@ public class KoreanAdapter extends RecyclerView.Adapter<KoreanAdapter.ProductVie
 
         holder.textViewTitle.setText(foodlist.getTitle());
         holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
-        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(Menu.getImage()));
     }
 
     @Override

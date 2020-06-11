@@ -1,24 +1,26 @@
-package com.example.coursework;
+package com.example.coursework.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.squareup.picasso.Picasso;
+
+import com.example.coursework.R;
+import com.example.coursework.model.Menu;
+
 import java.util.List;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHolder> {
+public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.ProductViewHolder> {
 
     private Context mCtx;
     private List<Menu> foodList;
 
-    public FoodAdapter(Context mCtx, List<Menu> foodList) {
+    public BreakfastAdapter(Context mCtx, List<Menu> foodList) {
         this.mCtx = mCtx;
         this.foodList = foodList;
     }
@@ -27,7 +29,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHol
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view= inflater.inflate(R.layout.food_list, null);
+        View view= inflater.inflate(R.layout.breakfast, null);
         ProductViewHolder holder = new ProductViewHolder(view);
         return new ProductViewHolder(view);
     }
@@ -36,9 +38,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHol
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
     //Bind data
         Menu foodlist = foodList.get(position);
-        holder.title.setText(foodlist.getTitle());
-        holder.price.setText(foodlist.getPrice());
-        Picasso.with(mCtx).load(foodlist.getImage()).placeholder(R.drawable.burger).fit().centerCrop().into(holder.imageView);
+
+        holder.textViewTitle.setText(foodlist.getTitle());
+        holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
+        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
     }
 
     @Override
@@ -49,14 +52,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ProductViewHol
     class ProductViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageView;
-        TextView title, price;
-
+        TextView textViewTitle, textViewPrice;
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView=itemView.findViewById(R.id.imageView);
-            title=itemView.findViewById(R.id.textViewTitle);
-            price = itemView.findViewById(R.id.textViewPrice);
+            textViewTitle=itemView.findViewById(R.id.textViewTitle);
+            textViewPrice = itemView.findViewById(R.id.textViewPrice);
         }
     }
 }

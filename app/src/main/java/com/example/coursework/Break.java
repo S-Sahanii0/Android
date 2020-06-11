@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.coursework.Adapter.BreakfastAdapter;
+import com.example.coursework.model.Menu;
+
 import java.util.ArrayList;
 import java.util.List;
 
