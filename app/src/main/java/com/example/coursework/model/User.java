@@ -1,4 +1,4 @@
-package com.example.coursework;
+package com.example.coursework.model;
 
 public class User {
     public String username, email, number, name;

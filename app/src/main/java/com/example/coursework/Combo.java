@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.coursework.Adapter.ComboAdapter;
-import com.example.coursework.model.Combo_model;
+import com.example.coursework.model.Menu;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +26,7 @@ public class Combo extends AppCompatActivity {
     ComboAdapter adapter;
     DatabaseReference ref;
     TextView title, price;
-    List<Combo_model> Combolist;
+    List<Menu> Combolist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,8 @@ public class Combo extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
-                    Combo_model comboModel = postSnapshot.getValue(Combo_model.class);
-                    Combolist.add(comboModel);
+                    Menu menu = postSnapshot.getValue(Menu.class);
+                    Combolist.add(menu);
                 }
                 ComboAdapter adapter = new ComboAdapter(Combo.this, Combolist);
                 recyclerView.setAdapter(adapter);

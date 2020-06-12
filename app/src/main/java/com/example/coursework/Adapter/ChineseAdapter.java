@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursework.R;
 import com.example.coursework.model.Menu;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class ChineseAdapter extends RecyclerView.Adapter<ChineseAdapter.ProductV
 
         holder.textViewTitle.setText(foodlist.getTitle());
         holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
-        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(Menu.getImage()));
+        Picasso.with(mCtx).load(foodlist.getImage()).placeholder(R.drawable.burger).fit().centerCrop().into(holder.imageView);
     }
 
     @Override
@@ -50,9 +51,9 @@ public class ChineseAdapter extends RecyclerView.Adapter<ChineseAdapter.ProductV
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder{
-
         ImageView imageView;
         TextView textViewTitle, textViewPrice;
+
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
 

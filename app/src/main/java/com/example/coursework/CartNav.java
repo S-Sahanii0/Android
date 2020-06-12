@@ -18,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.coursework.model.Combo_model;
 import com.example.coursework.model.Menu;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -90,14 +89,14 @@ public class CartNav extends Fragment {
             }
         });
 
-        /*korean.setOnClickListener(new View.OnClickListener() {
+        korean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadKorean();
             }
         });
 
-        breakfast.setOnClickListener(new View.OnClickListener() {
+       breakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadBreakfast();
@@ -109,7 +108,7 @@ public class CartNav extends Fragment {
             public void onClick(View v) {
                 uploadChinese();
             }
-        });*/
+        });
 
         return view;
     }
@@ -187,8 +186,95 @@ public class CartNav extends Fragment {
                         public void onSuccess(Uri uri) {
                             String uriimage=String.valueOf(uri);
                             databaseReference.push().getKey();
-                            Combo_model comboModel = new Combo_model(pricee,uriimage, name);
-                            databaseReference.child("Combo").push().setValue(comboModel);
+                            Menu menu = new Menu(pricee,uriimage, name);
+                            databaseReference.child("Combo").push().setValue(menu);
+                            Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
+                            //startActivity(new Intent(getActivity(), OrderNav.class));
+
+                        }
+                    });
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(), "Please select the product image", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void uploadKorean(){
+        final String name = title.getText().toString();
+        final String pricee = price.getText().toString();
+        if (filePath != null) {
+            final String key=databaseReference.push().getKey();
+            storeRef.child("Korean").child(key).putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    storeRef.child("Korean").child(key).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String uriimage=String.valueOf(uri);
+                            databaseReference.push().getKey();
+                            Menu menu = new Menu(pricee,uriimage, name);
+                            databaseReference.child("Korean").push().setValue(menu);
+                            Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
+                            //startActivity(new Intent(getActivity(), OrderNav.class));
+
+                        }
+                    });
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(), "Please select the product image", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void uploadBreakfast(){
+        final String name = title.getText().toString();
+        final String pricee = price.getText().toString();
+        if (filePath != null) {
+            final String key=databaseReference.push().getKey();
+            storeRef.child("Breakfast").child(key).putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    storeRef.child("Breakfast").child(key).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String uriimage=String.valueOf(uri);
+                            databaseReference.push().getKey();
+                            Menu menu = new Menu(pricee,uriimage, name);
+                            databaseReference.child("Breakfast").push().setValue(menu);
+                            Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
+                            //startActivity(new Intent(getActivity(), OrderNav.class));
+
+                        }
+                    });
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(), "Please select the product image", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void uploadChinese(){
+        final String name = title.getText().toString();
+        final String pricee = price.getText().toString();
+        if (filePath != null) {
+            final String key=databaseReference.push().getKey();
+            storeRef.child("Chinese").child(key).putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    storeRef.child("Chinese").child(key).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String uriimage=String.valueOf(uri);
+                            databaseReference.push().getKey();
+                            Menu menu = new Menu(pricee,uriimage, name);
+                            databaseReference.child("Chinese").push().setValue(menu);
                             Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
                             //startActivity(new Intent(getActivity(), OrderNav.class));
 
