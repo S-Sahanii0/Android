@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".ProfileNav">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#AB363535"
         android:orientation="vertical">
 
         <LinearLayout
@@ -38,8 +36,8 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Username"
+                android:textColor="#2C3880"
                 android:textSize="20sp"
-                android:textColor="#FDF8F8"
                 android:textStyle="bold" />
 
             <EditText
@@ -49,8 +47,8 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Full Name"
+                android:textColor="#2C3880"
                 android:textSize="20sp"
-                android:textColor="#FDF8F8"
                 android:textStyle="bold" />
 
             <EditText
@@ -60,8 +58,8 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Email"
+                android:textColor="#2C3880"
                 android:textSize="20sp"
-                android:textColor="#FDF8F8"
                 android:textStyle="bold" />
 
             <EditText
@@ -71,8 +69,8 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Number"
+                android:textColor="#2C3880"
                 android:textSize="20sp"
-                android:textColor="#FDF8F8"
                 android:textStyle="bold" />
             <Button
                 android:id="@+id/prof_update"

@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="match">#e37335</color>
-    <color name="orange">#5dbcd2</color>
-    <color name="startcolorgradient">#443C20</color>
-    <color name="endcolorgradient">#e8a564</color>
+    <color name="orange">#00aeef</color>
+    <color name="startcolorgradient">#00aeef</color>
+    <color name="endcolorgradient">#5dbcd2</color>
 </resources>

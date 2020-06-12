@@ -59,6 +59,13 @@ public class ProfileNav extends Fragment {
         prof_logout= view.findViewById(R.id.prof_logout);
         prof_update=view.findViewById(R.id.prof_update);
 
+        prof_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateProfile();
+            }
+        });
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         ref = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
 
@@ -127,6 +134,19 @@ public class ProfileNav extends Fragment {
         super.onStop();
         if (mauthAuthStateListener != null) {
             FirebaseAuth.getInstance().removeAuthStateListener(mauthAuthStateListener);
+        }
+    }
+
+    public void updateProfile(){
+        try {
+
+            ref.child("username").setValue(prof_username.getText().toString());
+            ref.child("name").setValue(prof_name.getText().toString());
+            ref.child("email").setValue(prof_email.getText().toString());
+            ref.child("number").setValue(prof_number.getText().toString());
+            Toast.makeText(getActivity(), "Successfully updated.", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(getActivity(), "Unable to update", Toast.LENGTH_SHORT).show();
         }
     }
 
