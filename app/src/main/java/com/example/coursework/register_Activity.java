@@ -20,6 +20,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class register_Activity extends AppCompatActivity {
 
@@ -27,7 +29,7 @@ public class register_Activity extends AppCompatActivity {
     EditText Username, Fname,Email, Password, Number, Confirm_pass;
     TextView Log;
     Button Register;
-    ImageView Image;
+    CircleImageView Image;
     private FirebaseAuth mAuth;
 
 
@@ -44,6 +46,8 @@ public class register_Activity extends AppCompatActivity {
         Register = findViewById(R.id.button3);
         Log = findViewById(R.id.textView2);
         Confirm_pass = findViewById(R.id.confirm_pass);
+        Image= findViewById(R.id.profile_image);
+        Image.setVisibility(View.INVISIBLE);
         mAuth = FirebaseAuth.getInstance();
 
         Log.setOnClickListener(new View.OnClickListener() {
