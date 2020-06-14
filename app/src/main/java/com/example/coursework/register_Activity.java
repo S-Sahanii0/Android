@@ -124,10 +124,10 @@ public class register_Activity extends AppCompatActivity {
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Email field is empty", Toast.LENGTH_SHORT).show();
             return;
-        }else if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && TextUtils.isEmpty(name) && TextUtils.isEmpty(username)
-                    && TextUtils .isEmpty(number) && TextUtils.isEmpty(password) && TextUtils.isEmpty(confirm_pass)){
+        } else if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && TextUtils.isEmpty(name) && TextUtils.isEmpty(username)
+                && TextUtils.isEmpty(number) && TextUtils.isEmpty(password) && TextUtils.isEmpty(confirm_pass)) {
             Toast.makeText(this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
-        }else if (TextUtils.isEmpty(password)) {
+        } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Password field is empty", Toast.LENGTH_SHORT).show();
             return;
         } else if (TextUtils.isEmpty(name)) {
@@ -144,8 +144,8 @@ public class register_Activity extends AppCompatActivity {
             return;
         } else if (password.length() < 6) {
             Toast.makeText(this, "Password too short", Toast.LENGTH_SHORT).show();
-            //}else if (password != confirm_pass){
-            //Toast.makeText(register_Activity.this, "Password do not match", Toast.LENGTH_SHORT).show();
+            }else if (!password.equals(confirm_pass)){
+            Toast.makeText(this, "Password do not match", Toast.LENGTH_SHORT).show();
         } else {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
