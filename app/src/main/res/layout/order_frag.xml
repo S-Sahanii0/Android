@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".NavBar_Food">
 
+        <include layout="@layout/header"/>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/header"
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
