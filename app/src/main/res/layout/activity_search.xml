@@ -4,10 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Break">
+    tools:context=".Search">
+
+    <ImageView
+        android:id="@+id/search_id"
+        android:layout_width="38dp"
+        android:layout_height="58dp"
+        android:src="@drawable/search_icon" />
+
+    <EditText
+        android:id="@+id/search_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/search_id"
+        android:hint="Search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
+        android:layout_below="@+id/search_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />

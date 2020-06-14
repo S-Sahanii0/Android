@@ -42,7 +42,7 @@ public class OrderNav extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.order_frag, container, false);
-        ref= FirebaseDatabase.getInstance().getReference("Food");
+        ref = FirebaseDatabase.getInstance().getReference("Food");
         foodlist = new ArrayList<>();
         title = view.findViewById(R.id.title_id);
         price = view.findViewById(R.id.price_id);
@@ -53,7 +53,7 @@ public class OrderNav extends Fragment {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Menu menu = postSnapshot.getValue(Menu.class);
                     foodlist.add(menu);
                 }
@@ -67,7 +67,7 @@ public class OrderNav extends Fragment {
             }
         });
 
-            return view;
-        }
+        return view;
     }
+}
 

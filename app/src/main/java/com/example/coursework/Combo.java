@@ -32,19 +32,19 @@ public class Combo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combo);
-        ref= FirebaseDatabase.getInstance().getReference("Combo");
+        ref = FirebaseDatabase.getInstance().getReference("Combo");
         Combolist = new ArrayList<>();
         title = findViewById(R.id.title_id);
         price = findViewById(R.id.price_id);
         Combolist = new ArrayList<>();
-        recyclerView =findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Menu menu = postSnapshot.getValue(Menu.class);
                     Combolist.add(menu);
                 }
@@ -59,8 +59,6 @@ public class Combo extends AppCompatActivity {
         });
 
 
-
-
     }
-    }
+}
 

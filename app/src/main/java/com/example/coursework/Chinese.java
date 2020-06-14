@@ -31,9 +31,9 @@ public class Chinese extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chinese);
-        ref= FirebaseDatabase.getInstance().getReference("Chinese");
+        ref = FirebaseDatabase.getInstance().getReference("Chinese");
         foodlist = new ArrayList<>();
-        recyclerView =findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ChineseAdapter adapter = new ChineseAdapter(this, foodlist);
@@ -43,7 +43,7 @@ public class Chinese extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Menu menu = postSnapshot.getValue(Menu.class);
                     foodlist.add(menu);
                 }

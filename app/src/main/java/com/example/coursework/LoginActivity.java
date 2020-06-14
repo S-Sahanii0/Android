@@ -18,34 +18,33 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText login_email, login_password ;
+    EditText login_email, login_password;
     Button log_btn;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login_email= findViewById(R.id.email_id);
-        login_password= findViewById(R.id.password_id);
-        log_btn= findViewById(R.id.login_btn);
+        login_email = findViewById(R.id.email_id);
+        login_password = findViewById(R.id.password_id);
+        log_btn = findViewById(R.id.login_btn);
         mAuth = FirebaseAuth.getInstance();
 
     }
 
 
     public void login(View view) {
-        String email= login_email.getText().toString().trim();
-        String password= login_password.getText().toString().trim();
+        String email = login_email.getText().toString().trim();
+        String password = login_password.getText().toString().trim();
 
-        if (email.isEmpty()){
-            Toast.makeText(this, "Username is empty", Toast.LENGTH_SHORT).show();
-        }
-        else if (password.isEmpty()){
+        if (email.isEmpty()) {
+            Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show();
+        } else if (password.isEmpty()) {
             Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            userLogin(email,password);
+        } else {
+            userLogin(email, password);
         }
     }
 

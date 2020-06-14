@@ -28,23 +28,23 @@ public class NavBar_Food extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    Fragment displayedFrag=null;
+                    Fragment displayedFrag = null;
 
-                    switch (menuItem.getItemId()){
+                    switch (menuItem.getItemId()) {
                         case R.id.home_id:
-                            displayedFrag= new HomeNav();
+                            displayedFrag = new HomeNav();
                             break;
 
                         case R.id.order_id:
-                            displayedFrag= new OrderNav();
+                            displayedFrag = new OrderNav();
                             break;
 
                         case R.id.cart_id:
-                            displayedFrag= new CartNav();
+                            displayedFrag = new CartNav();
                             break;
 
                         case R.id.profile_id:
-                            displayedFrag=new ProfileNav();
+                            displayedFrag = new ProfileNav();
                             break;
                     }
 
@@ -54,5 +54,5 @@ public class NavBar_Food extends AppCompatActivity {
                 }
             };
 
-   
+
 }

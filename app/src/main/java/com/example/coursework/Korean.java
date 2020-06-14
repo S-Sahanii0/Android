@@ -35,12 +35,12 @@ public class Korean extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_korean);
-        ref= FirebaseDatabase.getInstance().getReference("Korean");
-        order= findViewById(R.id.orderButton);
-        title=findViewById(R.id.textViewTitle);
-        price=findViewById(R.id.textViewPrice);
+        ref = FirebaseDatabase.getInstance().getReference("Korean");
+        order = findViewById(R.id.orderButton);
+        title = findViewById(R.id.textViewTitle);
+        price = findViewById(R.id.textViewPrice);
         foodlist = new ArrayList<>();
-        recyclerView =findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         KoreanAdapter adapter = new KoreanAdapter(this, foodlist);
@@ -50,7 +50,7 @@ public class Korean extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Menu menu = postSnapshot.getValue(Menu.class);
                     foodlist.add(menu);
                 }
@@ -63,7 +63,6 @@ public class Korean extends AppCompatActivity {
                 Toast.makeText(Korean.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
     }

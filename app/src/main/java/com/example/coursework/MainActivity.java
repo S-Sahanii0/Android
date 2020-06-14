@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Food= findViewById(R.id.Food);
-        button= findViewById(R.id.button);
-        button2= findViewById(R.id.button2);
+        Food = findViewById(R.id.Food);
+        button = findViewById(R.id.button);
+        button2 = findViewById(R.id.button2);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 
 }

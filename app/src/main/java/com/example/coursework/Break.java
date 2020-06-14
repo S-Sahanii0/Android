@@ -31,9 +31,9 @@ public class Break extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_break);
-        ref= FirebaseDatabase.getInstance().getReference("Breakfast");
+        ref = FirebaseDatabase.getInstance().getReference("Breakfast");
         foodlist = new ArrayList<>();
-        recyclerView =findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         BreakfastAdapter adapter = new BreakfastAdapter(this, foodlist);
@@ -43,7 +43,7 @@ public class Break extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Menu menu = postSnapshot.getValue(Menu.class);
                     foodlist.add(menu);
                 }

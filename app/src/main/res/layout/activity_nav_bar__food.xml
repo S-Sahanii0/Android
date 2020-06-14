@@ -21,6 +21,6 @@
         app:itemIconTint="@color/orange"
         app:itemTextColor="@color/orange"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5dbcd2"
-    >
+    android:background="#5dbcd2">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -16,7 +14,7 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
         android:tint="#FFFFFF"
-        android:src="@drawable/logu"/>
+        android:src="@drawable/logu" />
 
 
 </RelativeLayout>
