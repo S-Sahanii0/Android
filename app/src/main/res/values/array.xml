@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinnerItems">
+        <item>Add to Main Menu</item>
         <item>Add to Combo Menu</item>
         <item>Add to Chinese Menu</item>
         <item>Add to Korean Menu</item>

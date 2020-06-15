@@ -4,12 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Break">
+    tools:context=".Categories.Break">
+
+    <include layout="@layout/header"/>
+
+    <ImageView
+        android:layout_below="@+id/header"
+        android:id="@+id/imh"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:src="@drawable/breakk" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/imh"
         android:scrollbars="vertical" />
 
 </RelativeLayout>

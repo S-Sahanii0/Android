@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -37,11 +36,11 @@ public class NavBar_Food extends AppCompatActivity {
                             break;
 
                         case R.id.order_id:
-                            displayedFrag = new OrderNav();
+                            displayedFrag = new MenuNav();
                             break;
 
                         case R.id.cart_id:
-                            displayedFrag = new CartNav();
+                            displayedFrag = new UploadNav();
                             break;
 
                         case R.id.profile_id:

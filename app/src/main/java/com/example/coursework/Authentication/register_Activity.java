@@ -1,14 +1,12 @@
-package com.example.coursework;
+package com.example.coursework.Authentication;
 
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.coursework.model.Menu;
+import com.example.coursework.NavBar_Food;
+import com.example.coursework.R;
 import com.example.coursework.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -121,12 +120,12 @@ public class register_Activity extends AppCompatActivity {
         final String name = Fname.getText().toString().trim();
         final String key = ref.push().getKey();
 
-        if (TextUtils.isEmpty(email)) {
+
+        if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && TextUtils.isEmpty(name) && TextUtils.isEmpty(username) && TextUtils.isEmpty(number) && TextUtils.isEmpty(password) && TextUtils.isEmpty(confirm_pass)){
+            Toast.makeText(this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
+        }else if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Email field is empty", Toast.LENGTH_SHORT).show();
             return;
-        } else if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && TextUtils.isEmpty(name) && TextUtils.isEmpty(username)
-                && TextUtils.isEmpty(number) && TextUtils.isEmpty(password) && TextUtils.isEmpty(confirm_pass)) {
-            Toast.makeText(this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Password field is empty", Toast.LENGTH_SHORT).show();
             return;
@@ -144,7 +143,7 @@ public class register_Activity extends AppCompatActivity {
             return;
         } else if (password.length() < 6) {
             Toast.makeText(this, "Password too short", Toast.LENGTH_SHORT).show();
-            }else if (!password.equals(confirm_pass)){
+        }else if (!password.equals(confirm_pass)){
             Toast.makeText(this, "Password do not match", Toast.LENGTH_SHORT).show();
         } else {
             mAuth.createUserWithEmailAndPassword(email, password)

@@ -1,4 +1,4 @@
-package com.example.coursework;
+package com.example.coursework.Categories;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.coursework.Adapter.BreakfastAdapter;
 import com.example.coursework.Adapter.ComboAdapter;
+import com.example.coursework.R;
 import com.example.coursework.model.Menu;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

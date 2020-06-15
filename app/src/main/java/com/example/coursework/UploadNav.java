@@ -20,8 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.coursework.Authentication.LoginActivity;
 import com.example.coursework.model.Menu;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.core.Context;
@@ -32,12 +35,13 @@ import com.squareup.picasso.Picasso;
 
 import static android.app.Activity.RESULT_OK;
 
-public class CartNav extends Fragment {
+public class UploadNav extends Fragment {
 
     private static final int PICK_GALLERY_IMAGE = 234;
+    FirebaseAuth.AuthStateListener mauthAuthStateListener;
     public static Context contextOfApplication;
+    String finalPushKey;
     private Uri filePath;
-    Button add, combo, korean, breakfast, chinese;
     ImageView food;
     EditText title, price;
     ProgressBar mProgressBar;
@@ -52,26 +56,22 @@ public class CartNav extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view= inflater.inflate(R.layout.cart_frag, container, false);
+        final View view= inflater.inflate(R.layout.upload_frag, container, false);
         title=view.findViewById(R.id.title_id);
         food=view.findViewById(R.id.uploadImage);
         price=view.findViewById(R.id.price_id);
-//        add=view.findViewById(R.id.add_id);
-//        combo=view.findViewById(R.id.combo_btn);
-//        chinese=view.findViewById(R.id.chinese_btn);
-//        korean=view.findViewById(R.id.korean_btn);
-//        breakfast=view.findViewById(R.id.breakfast_btn);
         mSpinner = view.findViewById(R.id.spinner_id);
         doneButton = view.findViewById(R.id.done);
-
         fire = FirebaseStorage.getInstance();
         storeRef = fire.getReference();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+        finalPushKey= databaseReference.push().getKey();
 
 
         contextOfApplication = getApplicationContext();
         mProgressBar = view.findViewById(R.id.progress_bar);
+
 
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +84,10 @@ public class CartNav extends Fragment {
                 dialog = builder.create();
 
                 switch (mSpinner.getSelectedItem().toString()){
+                    case "Add to Main Menu":
+                        uploadData();
+
+                        break;
                     case "Add to Combo Menu":
                         uploadCombo();
                         uploadData();
@@ -109,51 +113,12 @@ public class CartNav extends Fragment {
             }
         });
 
-
-
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showGallery();
             }
         });
-//
-//        add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                uploadData();
-//
-//            }
-//        });
-//
-//        combo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                uploadCombo();
-//            }
-//        });
-//
-//        korean.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                uploadKorean();
-//            }
-//        });
-//
-//       breakfast.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                uploadBreakfast();
-//            }
-//        });
-//
-//        chinese.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                uploadChinese();
-//            }
-//        });
-
         return view;
     }
 
@@ -187,10 +152,10 @@ public class CartNav extends Fragment {
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
 
+
     private void uploadData() {
         final String name = title.getText().toString();
         final String pricee = price.getText().toString();
-        //String imagekey=databaseReference.push().getKey();
 
         if (filePath != null) {
             dialog.show();
@@ -203,12 +168,11 @@ public class CartNav extends Fragment {
                         @Override
                         public void onSuccess(Uri uri) {
                             String uriimage = String.valueOf(uri);
-                            databaseReference.push().getKey();
-                            Menu menu = new Menu(pricee, uriimage, name);
-                            databaseReference.child("Food").push().setValue(menu);
+                            Menu menu = new Menu(pricee, uriimage, name, finalPushKey);
+                            databaseReference.child("Food").child(finalPushKey).setValue(menu);
                             Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
                             dialog.dismiss();
-                            //startActivity(new Intent(getActivity(), OrderNav.class));
+                            //startActivity(new Intent(getActivity(), MenuNav.class));
 
                         }
                     });
@@ -233,12 +197,12 @@ public class CartNav extends Fragment {
                     storeRef.child("Combo").child(key).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            String uriimage = String.valueOf(uri);
-                            databaseReference.push().getKey();
-                            Menu menu = new Menu(pricee, uriimage, name);
-                            databaseReference.child("Combo").push().setValue(menu);
+                            String uriimage = String.valueOf(uri);;
+                            Menu menu = new Menu(pricee, uriimage, name, finalPushKey);
+                            databaseReference.child("Combo").child(finalPushKey).setValue(menu);
                             Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
-                            //startActivity(new Intent(getActivity(), OrderNav.class));
+                            dialog.dismiss();
+                            //startActivity(new Intent(getActivity(), MenuNav.class));
 
                         }
                     });
@@ -265,11 +229,11 @@ public class CartNav extends Fragment {
                         @Override
                         public void onSuccess(Uri uri) {
                             String uriimage = String.valueOf(uri);
-                            databaseReference.push().getKey();
-                            Menu menu = new Menu(pricee, uriimage, name);
-                            databaseReference.child("Korean").push().setValue(menu);
+                            Menu menu = new Menu(pricee, uriimage, name, finalPushKey);
+                            databaseReference.child("Korean").child(finalPushKey).setValue(menu);
                             Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
-                            //startActivity(new Intent(getActivity(), OrderNav.class));
+                            dialog.dismiss();
+                            //startActivity(new Intent(getActivity(), MenuNav.class));
 
                         }
                     });
@@ -297,11 +261,11 @@ public class CartNav extends Fragment {
                         @Override
                         public void onSuccess(Uri uri) {
                             String uriimage = String.valueOf(uri);
-                            databaseReference.push().getKey();
-                            Menu menu = new Menu(pricee, uriimage, name);
-                            databaseReference.child("Breakfast").push().setValue(menu);
+                            Menu menu = new Menu(pricee, uriimage, name, finalPushKey);
+                            databaseReference.child("Breakfast").child(finalPushKey).setValue(menu);
                             Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
-                            //startActivity(new Intent(getActivity(), OrderNav.class));
+                            dialog.dismiss();
+
 
                         }
                     });
@@ -327,11 +291,11 @@ public class CartNav extends Fragment {
                         @Override
                         public void onSuccess(Uri uri) {
                             String uriimage = String.valueOf(uri);
-                            databaseReference.push().getKey();
-                            Menu menu = new Menu(pricee, uriimage, name);
-                            databaseReference.child("Chinese").push().setValue(menu);
+                            Menu menu = new Menu(pricee, uriimage, name, finalPushKey);
+                            databaseReference.child("Chinese").child(finalPushKey).setValue(menu);
                             Toast.makeText(getActivity(), "Upload Successful", Toast.LENGTH_LONG).show();
-                            //startActivity(new Intent(getActivity(), OrderNav.class));
+                            dialog.dismiss();
+                            //startActivity(new Intent(getActivity(), MenuNav.class));
 
                         }
                     });

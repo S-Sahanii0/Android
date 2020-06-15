@@ -1,34 +1,32 @@
 package com.example.coursework;
 
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.net.InetAddresses;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.tasks.OnFailureListener;
+import com.example.coursework.Authentication.ChangePassword;
+import com.example.coursework.Authentication.LoginActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.Tag;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -54,6 +52,8 @@ public class ProfileNav extends Fragment {
     StorageReference mStorage;
     FirebaseDatabase db;
     DatabaseReference databaseReference;
+    AlertDialog dialog;
+    ProgressBar mProgressBar;
     private static final int PICK_GALLERY_IMAGE = 234;
 
 
@@ -85,10 +85,18 @@ public class ProfileNav extends Fragment {
         mStorage = fire.getReference();
         db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference();
+        mProgressBar = view.findViewById(R.id.progress_bar);
+
 
         prof_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                builder.setView(inflater.inflate(R.layout.loading_dialog, null));
+                builder.setCancelable(true);
+
+                dialog = builder.create();
                 updateProfile();
             }
         });
@@ -144,7 +152,6 @@ public class ProfileNav extends Fragment {
         } else {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
-
         }
 
 
@@ -201,6 +208,7 @@ public class ProfileNav extends Fragment {
 
     public void updateProfile() {
         try {
+            dialog.show();
             final String key = ref.push().getKey();
             mStorage.child("Profile").child(key).putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -217,6 +225,7 @@ public class ProfileNav extends Fragment {
                             ref.child("email").setValue(prof_email.getText().toString());
                             ref.child("number").setValue(prof_number.getText().toString());
                             ref.child("image").setValue(uriimage);
+                            dialog.dismiss();
                             Toast.makeText(getActivity(), "Successfully updated.", Toast.LENGTH_SHORT).show();
                         }
                     });

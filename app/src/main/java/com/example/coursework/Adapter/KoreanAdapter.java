@@ -7,11 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursework.R;
 import com.example.coursework.model.Menu;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,6 +24,8 @@ public class KoreanAdapter extends RecyclerView.Adapter<KoreanAdapter.ProductVie
 
     private Context mCtx;
     private List<Menu> foodList;
+    DatabaseReference databaseReference;
+    FirebaseDatabase db;
 
     public KoreanAdapter(Context mCtx, List<Menu> foodList) {
         this.mCtx = mCtx;
@@ -32,18 +38,20 @@ public class KoreanAdapter extends RecyclerView.Adapter<KoreanAdapter.ProductVie
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view= inflater.inflate(R.layout.korean_list, null);
         ProductViewHolder holder = new ProductViewHolder(view);
+        db= FirebaseDatabase.getInstance();
+        databaseReference=db.getReference();
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
     //Bind data
-        Menu foodlist = foodList.get(position);
+        final Menu foodlist = foodList.get(position);
 
         holder.textViewTitle.setText(foodlist.getTitle());
         holder.textViewPrice.setText(String.valueOf(foodlist.getPrice()));
         Picasso.with(mCtx).load(foodlist.getImage()).placeholder(R.drawable.burger).fit().centerCrop().into(holder.imageView);
-        //holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(foodlist.getImage()));
+
     }
 
     @Override

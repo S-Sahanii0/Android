@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NavBar_Food">
+
+    <include layout="@layout/header"/>
+
+    <ImageView
+        android:id="@+id/uploadImage"
+        android:layout_width="182dp"
+        android:layout_height="143dp"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/plus" />
+
+    <TextView
+        android:id="@+id/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uploadImage"
+        android:text="Select Image"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="335dp"
+        android:layout_height="263dp"
+        android:layout_below="@+id/Text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#95cfe6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/uploadImage"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/title_id"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Title"
+                android:padding="10dp"
+                android:textColor="#0b506b"
+               />
+
+            <EditText
+                android:id="@+id/price_id"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:textColor="#0b506b"
+                android:hint="Price" />
+
+            <Spinner
+                android:id="@+id/spinner_id"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:entries="@array/spinnerItems" />
+
+            <Button
+                android:id="@+id/done"
+                android:layout_width="125dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/btn"
+                android:text="Done"
+                android:textColor="#F8F4F4" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

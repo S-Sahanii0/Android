@@ -12,6 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.coursework.Adapter.ImageSlider;
+import com.example.coursework.Authentication.LoginActivity;
+import com.example.coursework.Categories.Break;
+import com.example.coursework.Categories.Chinese;
+import com.example.coursework.Categories.Combo;
+import com.example.coursework.Categories.Korean;
 import com.example.coursework.model.Slider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,6 +42,7 @@ public class HomeNav extends Fragment {
         chinese = view.findViewById(R.id.chinese_id);
         sliderView = view.findViewById(R.id.home_header_image);
         logouu=view.findViewById(R.id.logout_id);
+
 
         logouu.setOnClickListener(new View.OnClickListener() {
             @Override

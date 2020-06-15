@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursework.Adapter.FoodAdapter;
 import com.example.coursework.model.Menu;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,22 +34,25 @@ import java.util.List;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
-public class OrderNav extends Fragment {
+public class MenuNav extends Fragment {
+    SearchView searchView;
     RecyclerView recyclerView;
     FoodAdapter adapter;
-    Button order;
+    Button delete;
     ImageView image;
     TextView title, price;
     FirebaseUser user;
-    DatabaseReference ref;
+    DatabaseReference ref, refrence;
     List<Menu> foodlist;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.order_frag, container, false);
-        ref= FirebaseDatabase.getInstance().getReference("Food");
+        View view = inflater.inflate(R.layout.menu_frag, container, false);
+        ref = FirebaseDatabase.getInstance().getReference("Food");
+        refrence = FirebaseDatabase.getInstance().getReference();
+        searchView = view.findViewById(R.id.combo_search_id);
         foodlist = new ArrayList<>();
         title = view.findViewById(R.id.title_id);
         price = view.findViewById(R.id.price_id);
@@ -60,7 +63,7 @@ public class OrderNav extends Fragment {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Menu menu = postSnapshot.getValue(Menu.class);
                     foodlist.add(menu);
                 }
@@ -74,6 +77,30 @@ public class OrderNav extends Fragment {
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchFood(newText);
+                return true;
+            }
+            private void searchFood(String a) {
+                ArrayList<Menu> food = new ArrayList<>();
+                for (Menu obj: foodlist){
+                    if (obj.getTitle().toUpperCase().contains(a.toUpperCase())){
+                        food.add(obj);
+                    }
+                }
+                FoodAdapter filtered = new FoodAdapter(getActivity(), food);
+                recyclerView.setAdapter(filtered);
+
+            }
+        });
+
 
         return view;
     }
@@ -111,6 +138,7 @@ public class OrderNav extends Fragment {
         deletedItem = foodlist.get(position);
         foodlist.remove(position);
         adapter.notifyItemRemoved(position);
+
 
         Snackbar.make(recyclerView, deletedItem.getTitle(), Snackbar.LENGTH_LONG)
                 .setAction("Undo", new View.OnClickListener() {

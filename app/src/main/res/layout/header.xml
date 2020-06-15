@@ -14,14 +14,7 @@
         android:layout_centerVertical="true"
         android:src="@drawable/logouu" />
 
-    <ImageView
 
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:padding="5dp"
-        android:src="@drawable/search_icon" />
 </RelativeLayout>
 
 <TextView
@@ -30,6 +23,7 @@ android:layout_height="wrap_content"
 android:layout_gravity="center"
 android:backgroundTint="#CA844C"
 android:layout_marginTop="-20dp"
+    android:layout_marginBottom="10dp"
 android:text="FoodO'Clock"
 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
 android:textSize="20sp" />

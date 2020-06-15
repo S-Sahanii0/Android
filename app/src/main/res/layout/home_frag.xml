@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".NavBar_Food">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/header" />
 
-    <include layout="@layout/header"/>
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -19,192 +21,193 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/home_header_image"
-        android:layout_width="384dp"
-        android:layout_height="154dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:scrollIndicators="none"
-        app:sliderAnimationDuration="600"
-        app:sliderAutoCycleDirection="left"
-        app:sliderAutoCycleEnabled="true"
-        app:sliderScrollTimeInSec="1"
-        app:sliderStartAutoCycle="true" />
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/home_header_image"
+                android:layout_width="384dp"
+                android:layout_height="154dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:scrollIndicators="none"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="left"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="true" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-
-        <ImageView
-            android:id="@+id/combo_id"
-            android:layout_width="184dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="0dp"
-            android:src="@drawable/combo" />
-
-        <ImageView
-            android:id="@+id/korean_id"
-            android:layout_width="184dp"
-            android:layout_height="142dp"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/korean" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/breakfast_id"
-            android:layout_width="184dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="0dp"
-            android:src="@drawable/breakfast" />
-
-        <ImageView
-            android:id="@+id/chinese_id"
-            android:layout_width="184dp"
-            android:layout_height="134dp"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/chinese" />
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#CA844C"
-        android:fontFamily="sans-serif"
-        android:text="Our Special"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginLeft="12dp">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="130dp"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/tofu_id"
-                    android:layout_width="172dp"
-                    android:layout_height="120dp"
+                    android:id="@+id/combo_id"
+                    android:layout_width="184dp"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="0dp"
-                    android:src="@drawable/tofu" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tofu_id"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="11dp"
-
-                    android:layout_marginBottom="5dp"
-                    android:backgroundTint="#CA844C"
-                    android:text="Tofu Stew"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="10dp" />
-
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="130dp"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                    android:src="@drawable/combo" />
 
                 <ImageView
-                    android:id="@+id/stew_id"
-                    android:layout_width="172dp"
-                    android:layout_height="120dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/pork" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/stew_id"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="11dp"
-
-                    android:layout_marginBottom="5dp"
-                    android:backgroundTint="#CA844C"
-                    android:text="Pork Chilly"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="10dp" />
+                    android:id="@+id/korean_id"
+                    android:layout_width="184dp"
+                    android:layout_height="142dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/korean" />
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="130dp"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/honey_id"
-                    android:layout_width="172dp"
-                    android:layout_height="120dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/chickenkatsu" />
+                    android:id="@+id/breakfast_id"
+                    android:layout_width="184dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="0dp"
+                    android:src="@drawable/breakfast" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/honey_id"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="11dp"
+                <ImageView
+                    android:id="@+id/chinese_id"
+                    android:layout_width="184dp"
+                    android:layout_height="134dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/chinese" />
 
-                    android:layout_marginBottom="5dp"
-                    android:backgroundTint="#CA844C"
-                    android:text="Chicken Katsu"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#CA844C"
+                android:fontFamily="sans-serif"
+                android:text="Our Special"
+                android:layout_marginVertical="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/tofu_id"
+                            android:layout_width="172dp"
+                            android:layout_height="120dp"
+                            android:layout_marginLeft="0dp"
+                            android:src="@drawable/tofu" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tofu_id"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="11dp"
+
+                            android:layout_marginBottom="5dp"
+                            android:backgroundTint="#CA844C"
+                            android:text="Tofu Stew"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="10dp" />
 
 
-            </RelativeLayout>
+                    </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/stew_id"
+                            android:layout_width="172dp"
+                            android:layout_height="120dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/pork" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/stew_id"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="11dp"
+
+                            android:layout_marginBottom="5dp"
+                            android:backgroundTint="#CA844C"
+                            android:text="Pork Chilly"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="10dp" />
 
 
-    </LinearLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/honey_id"
+                            android:layout_width="172dp"
+                            android:layout_height="120dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/chickenkatsu" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/honey_id"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="11dp"
+
+                            android:layout_marginBottom="5dp"
+                            android:backgroundTint="#CA844C"
+                            android:text="Chicken Katsu"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="10sp" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
-</ScrollView>
+    </ScrollView>
 </LinearLayout>

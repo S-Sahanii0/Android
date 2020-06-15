@@ -68,11 +68,11 @@
                     android:gravity="center">
 
                     <Button
-                        android:id="@+id/orderButton"
+                        android:id="@+id/delete_btn"
                         android:layout_width="77dp"
                         android:layout_height="32dp"
                         android:background="@drawable/btn"
-                        android:text="Order"
+                        android:text="Delete"
                         android:textAlignment="center"
                         android:textColor="#F3EFEF"
                         android:textSize="12sp"

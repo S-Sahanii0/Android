@@ -9,23 +9,21 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ForgotPassword"></activity>
-        <activity android:name=".ChangePassword" />
-        <activity android:name=".Search" />
-        <activity android:name=".Break" />
-        <activity android:name=".Chinese" />
-        <activity android:name=".Korean" />
-        <activity android:name=".Combo" />
-        <activity android:name=".SpecialCombo" />
+        <activity android:name=".Authentication.ForgotPassword"></activity>
+        <activity android:name=".Authentication.ChangePassword" />
+        <activity android:name=".Categories.Break" />
+        <activity android:name=".Categories.Chinese" />
+        <activity android:name=".Categories.Korean" />
+        <activity android:name=".Categories.Combo" />
         <activity android:name=".ProfileNav" />
         <activity android:name=".NavBar_Food" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".register_Activity" />
+        <activity android:name=".Authentication.LoginActivity" />
+        <activity android:name=".Authentication.register_Activity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />

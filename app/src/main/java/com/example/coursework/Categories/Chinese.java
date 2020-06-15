@@ -1,4 +1,4 @@
-package com.example.coursework;
+package com.example.coursework.Categories;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.coursework.Adapter.ChineseAdapter;
 import com.example.coursework.Adapter.ComboAdapter;
+import com.example.coursework.R;
 import com.example.coursework.model.Menu;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,45 +21,43 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Combo extends AppCompatActivity {
+public class Chinese extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ComboAdapter adapter;
+    ChineseAdapter adapter;
     DatabaseReference ref;
-    TextView title, price;
-    List<Menu> Combolist;
+    List<Menu> foodlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_combo);
-        ref = FirebaseDatabase.getInstance().getReference("Combo");
-        Combolist = new ArrayList<>();
-        title = findViewById(R.id.title_id);
-        price = findViewById(R.id.price_id);
-        Combolist = new ArrayList<>();
+        setContentView(R.layout.activity_chinese);
+        ref = FirebaseDatabase.getInstance().getReference("Chinese");
+        foodlist = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ChineseAdapter adapter = new ChineseAdapter(this, foodlist);
+        //setting adapter to recyclerview
+        recyclerView.setAdapter(adapter);
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Menu menu = postSnapshot.getValue(Menu.class);
-                    Combolist.add(menu);
+                    foodlist.add(menu);
                 }
-                ComboAdapter adapter = new ComboAdapter(Combo.this, Combolist);
+                ComboAdapter adapter = new ComboAdapter(Chinese.this, foodlist);
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(Combo.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Chinese.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
     }
 }
-

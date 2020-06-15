@@ -6,10 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".NavBar_Food">
 
-        <include layout="@layout/header"/>
+    <include layout="@layout/header"/>
+
+    <SearchView
+        android:layout_below="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/combo_search_id"
+        />
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/header"
+        android:layout_below="@+id/combo_search_id"
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

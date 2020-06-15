@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    tools:context=".LoginActivity">
+    tools:context=".Authentication.LoginActivity">
 
 
     <LinearLayout
@@ -84,6 +84,26 @@
                 android:text="LogIn"
                 android:textColor="#F3EFEF"
                 android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/send_reg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Don't have an Account? Register"
+                android:textColor="#FDF9F9"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/send_f"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Forgot your password?"
+                android:textColor="#FDF9F9"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
